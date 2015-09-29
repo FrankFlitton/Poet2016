@@ -8,5 +8,15 @@
  */
 
 return array(
+ 
+'*' => array(
+        'omitScriptNameInUrls' => true,
+    ),
+ 'poet.dev' => array(
+        'devMode' => true,
+    ),
 
+ '*.com' => array(
+        'cooldownDuration' => 0,
+    )
 );
