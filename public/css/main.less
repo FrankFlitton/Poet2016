@@ -1,21 +1,77 @@
+@PoetGreen: #8dc63f;
+@white: #ffffff;
+@white: #ffffff;
 
+@import "../fonts/opensans.less";
+
+body {
+   font-family: "OpenSans" ;
+   font-size: 14px;
+}
 
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
 
 
+h1,h2,h3,h4,h5,h6 {
+   font-weight: 700;
+}
 
+h1 {
+   font-size: 2.35rem;
+   line-height: 1.4em;
+}
 
+.greenBG {color:@PoetGreen;}
 
+body {
+   padding: 0;
+}
 
+.hero {
+   position: relative;
+   background: green;
+   color: @white;
+   height: 100vh;
+   .container {
+      padding-top: 100px;
+   }
+   p {
+      font-weight: 300;
+   }
+}
 
+.navbar li { color: #000 }
 
+nav {
+   &.navbar{
+      background-color: transparent;
+      background: transparent;
+      border-width: 1px;
+      box-sizing: border-box;
+      height: 75px;
+   }
+   img {
+      width: 132px;
+   }
+}
 
+h1 strong,
+h2 strong,
+h3 strong,
+h4 strong,
+h5 strong,
+h6 strong {
+   color: @white;
+   background: @PoetGreen;
+   font-weight: inherit;
+   padding: .025em .3em .05em .3em;
+}
 
-
-
-
+h1 {
+   text-transform: uppercase;
+}
 
 
 
