@@ -286,6 +286,13 @@ body {
   bottom: 0;
   color: #b1b3b6;
 }
+.bar.col3 .container .col-md-4 {
+  display: inline;
+  padding: 0 7%;
+}
+.bar.col3 .container p {
+  font-weight: 100;
+}
 .relative {
   position: relative;
 }
