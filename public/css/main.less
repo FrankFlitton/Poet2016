@@ -1,13 +1,31 @@
 @PoetGreen: #8dc63f;
 @white: #ffffff;
-@white: #ffffff;
+@slate: #2f373a;
+@gray: #b1b3b6;
 
 @import "../fonts/opensans.less";
 
 body {
    font-family: "OpenSans" ;
-   font-size: 14px;
+   font-size: 16px;
 }
+
+body {
+   @media only screen and (max-width : 480px) {
+      font-size: 13px;
+   }
+}
+
+/* ==========================================================================
+   Flexslider
+   ========================================================================== */
+
+@import "variables.less";
+@import "resets.less";
+@import "base.less";
+//@import "theme.less";
+@import "responsive.less";
+
 
 /* ==========================================================================
    Author's custom styles
@@ -16,45 +34,12 @@ body {
 
 h1,h2,h3,h4,h5,h6 {
    font-weight: 700;
-}
-
-h1 {
-   font-size: 2.35rem;
+   margin-bottom: 1.5em; 
    line-height: 1.4em;
 }
 
-.greenBG {color:@PoetGreen;}
-
-body {
-   padding: 0;
-}
-
-.hero {
-   position: relative;
-   background: green;
-   color: @white;
-   height: 100vh;
-   .container {
-      padding-top: 100px;
-   }
-   p {
-      font-weight: 300;
-   }
-}
-
-.navbar li { color: #000 }
-
-nav {
-   &.navbar{
-      background-color: transparent;
-      background: transparent;
-      border-width: 1px;
-      box-sizing: border-box;
-      height: 75px;
-   }
-   img {
-      width: 132px;
-   }
+h1,h2,h3,h4,h5,h6,p {
+   margin-bottom: 1.25em; 
 }
 
 h1 strong,
@@ -71,7 +56,182 @@ h6 strong {
 
 h1 {
    text-transform: uppercase;
+   font-size: 3rem;
+
 }
+
+p {
+   font-weight: 300;
+   line-height: 1.9em;
+}
+
+.navbar li { color: #000 }
+
+nav {
+   &.navbar{
+      background-color: transparent;
+      background: transparent;
+      border-width: 1px;
+      box-sizing: border-box;
+      height: 75px;
+   }
+   img {
+      width: 136px;
+   }
+}
+
+.btn {
+   background-color: @PoetGreen;
+   border-radius: 0;
+   margin-right: 1.5rem;
+   text-transform: uppercase;
+   color: @white;
+   font-weight: 300;
+   box-sizing: border-box;
+   border: 2px @PoetGreen solid;
+   &.white {
+      background-color: transparent;
+      border: 2px @white solid;
+      text-transform: capitalize;
+   }
+}
+
+body {
+   padding: 0;
+}
+
+.hero {
+   position: relative;
+   background: green;
+   color: @white;
+   height: 100vh;
+   .container {
+      padding-top: 13rem;
+   }
+}
+
+.bar {
+   background-color:  @slate;
+   color: @white;
+   text-align: center;
+   font-weight: 100;
+   padding-top: 2em;
+   padding-bottom: 1em;
+   border-top: 2px @white solid;
+   strong {
+      font-weight: inherit;
+      color: @PoetGreen;
+   }
+}
+
+.featureslider {
+   min-height: 420px;
+   position: relative;
+   
+   .flexslider-featureslider {
+      li {
+         padding-top: 1em;
+         position: relative;
+         min-height: 420px;
+         overflow: hidden;
+         
+         img {
+            width: 60%;
+            display: block;
+            text-align: center;
+            position: relative;
+            padding-top: 1.5em;
+            padding-bottom: 1.5em;
+            height: inherit;
+            margin: 0 auto;
+         }
+         
+         @media only screen and (min-width : 1066px) {
+            img {
+               position: absolute;
+               left: 59%;
+               height: 97%;
+               top: 2em;
+               display: inline-block;
+               text-align: right;
+               width: inherit;
+            }
+         }      
+      }
+   }
+   .flexslider-controls {
+      
+      @media only screen and (max-width : 1065px) {
+            margin-top: 0 !important;
+         }
+      div {
+//         position: relative;
+      }
+//      position: absolute;
+      bottom: 0;
+      .flex-control-nav{
+         
+         .btn.green {
+            background: transparent;
+            text-align: left;
+            text-transform: capitalize;
+            color: @PoetGreen;
+            padding: 0;
+            margin: 0;
+            border: 0;
+            font-weight: 400;
+            font-size: 1em;
+         }
+         
+         img, img:hover {
+              filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+ */
+              filter: gray; /* IE6-9 */
+              -webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
+            }
+         .flex-active img, li:hover img, li:hover small {
+            filter: none; /* IE6-9 */
+            -webkit-filter: grayscale(0%); /* Chrome 19+ & Safari 6+ */
+            color: @PoetGreen;
+         }
+         .flex-active small {
+            color: @PoetGreen;
+         }
+         li {
+            margin-top: 0em;
+            width: 16.5%;
+            min-width: 20px;
+            min-height: 60px; 
+            display: inline-block;
+            position: relative;
+            margin-right: 7.7%;
+            img {
+               display: block;
+               position: relative;
+               top: 0;
+               margin: 0 auto;
+               height: 52px;
+               margin-bottom: 1em;
+            }
+            small {
+               display: block;
+               position: relative;
+               text-align: center;
+               bottom: 0;
+               color: @gray;
+            }
+         }
+      }
+   }
+}
+
+.relative {
+   position: relative;
+}
+
+.absolute {
+   position: absolute;
+}
+
 
 
 
