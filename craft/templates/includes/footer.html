@@ -1,0 +1,145 @@
+<section class="support">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+               <p>Supported by</p>
+                <div class="support-banners">
+                    <ul class="slides">
+                       {% for image in footer.supportedByImages %}
+                        <li>
+                            <img src="{{ image.getURL }}" />
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+   
+
+<section class="trypoet">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-5 col-sm-offset-1">
+                {{ footer.contactText }}
+            </div>
+            <div class="col-sm-4 col-sm-offset-1">
+                {% macro errorList(errors) %} {% if errors %}
+                <ul class="errors">
+                    {% for error in errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %} {% endmacro %} {% from _self import errorList %}
+
+                <form method="post" action="" accept-charset="UTF-8">
+                    {{ getCsrfInput() }}
+                    <input type="hidden" name="action" value="contactForm/sendMessage">
+                    <input type="hidden" name="redirect" value="contact/thanks">
+
+                    <h3><label for="fromName">Your Name</label></h3>
+                    <input placeholder="Name*" onfocus="this.placeholder=''" onblur="this.placeholder='Name*'" id="fromName" type="text" name="fromName" value="{% if message is defined %}{{ message.fromName }}{% endif %}">{{ message is defined and message ? errorList(message.getErrors('fromName')) }}
+
+                    <h3><label for="fromEmail">Your Email</label></h3>
+                    <input placeholder="Email*" onfocus="this.placeholder=''" onblur="this.placeholder='Email*'" id="fromEmail" type="text" name="fromEmail" value="{% if message is defined %}{{ message.fromEmail }}{% endif %}">{{ message is defined and message ? errorList(message.getErrors('fromEmail')) }}
+
+                    <h3><label for="company">Subject</label></h3>
+                    <input placeholder="Company" onfocus="this.placeholder=''" onblur="this.placeholder='Company'" id="company" type="text" name="company" value="{% if message is defined %}{{ message.company }}{% endif %}">{{ message is defined and message ? errorList(message.getErrors('subject')) }}
+
+                    <h3><label for="message">Message</label></h3>
+                    <input placeholder="Brief Message..." onfocus="this.placeholder=''" onblur="this.placeholder='Brief Message...'" id="message" name="message">{% if message is defined %}{{ message.message }}{% endif %}</textarea>
+                    {{ message is defined and message ? errorList(message.getErrors('message')) }}
+
+                    <input type="submit" value="Drop us a line!">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-sm-2">
+                <ul>
+                    <li>
+                        <p><a href="#">Solutions</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p><a href="#">Solutions</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p><a href="#">Solutions</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p><a href="#">Solutions</a>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <ul>
+                    <li>
+                        <p><a href="#">Solutions</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p><a href="#">Solutions</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p><a href="#">Solutions</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p><a href="#">Solutions</a>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <ul>
+                    <li>
+                        <p><a href="#">Solutions</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p><a href="#">Solutions</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p><a href="#">Solutions</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p><a href="#">Solutions</a>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-5 col-md-offset-1 col-sm-6 col-xs-10 col-xs-offset-1">
+                <a class="btn white-outline" href="{{ footer.requestADemoUrl }}">Request a demo!</a>
+                <div class="social">
+                    <a href="{{ companyInfo.facebook }}" target="_blank">
+                        <li class="fa fa-facebook"></li>
+                    </a>
+                    <a href="{{ companyInfo.twitter }}" target="_blank">
+                        <li class="fa fa-twitter"></li>
+                    </a>
+                    <a href="{{ companyInfo.linkedin }}" target="_blank">
+                        <li class="fa fa-linkedin"></li>
+                    </a>
+                    <a href="{{ companyInfo.youtube }}" target="_blank">
+                        <li class="fa fa-youtube"></li>
+                    </a>
+                </div>
+                <p class="copyright">&copy; {{"now"|date("Y")}}. All rights reserved by POET™ Inc.</p>
+            </div>
+        </div>
+    </div>
+</footer>

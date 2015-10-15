@@ -1,0 +1,33 @@
+<section class="hero">
+    {% set image = block.backgroundImage.first() %}
+    {% if image %}
+        <img class="bgimage" src="{{ image.getUrl }}" alt="{{ image.title }}">
+    {% endif %}
+    <div class="gradient one"></div>
+    <div class="gradient two"></div>
+    <div class="gradient three"></div>
+    <div class="container">
+        <div class="row top">
+            <div class="col-sm-6">
+                {{ block.text }}
+                {% if not block.greenButtonText is empty %}
+                <a class="btn green" href="{{ block.greenButtonUrl }}">{{ block.greenButtonText }}</a>
+                {% endif %}
+                {% if not block.whiteButtonText is empty %}
+                <a class="btn white" href="{{ block.whiteButtonUrl }}">{{ block.whiteButtonText }}</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row client-banners">
+            <div class="col-md-11">
+                <ul class="slides">
+                    {% for image in block.clientLogos %} {% if image %}
+                    <li>
+                        <img src="{{ image.getUrl }}" alt="{{ image.title }}">
+                    </li>
+                    {% endif %} {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

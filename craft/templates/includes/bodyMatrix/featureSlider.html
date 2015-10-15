@@ -1,0 +1,47 @@
+<section class="featureslider">
+<div class="flexslider-featureslider">
+    <ul class="slides">
+        {% for block in featureSlider.featureSlider %}
+        <li>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        {{ block.headline }}
+                    </div>
+                    {% set image = block.image.first() %}
+                    {% if image %}
+                        <img src="{{ image.getUrl }}" alt="{{ image.title }}">
+                    {% endif %}
+                    <img src="/img/Tablet.png" alt="">
+                    <div class="col-md-6">
+                        {{ block.text }}
+                    </div>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+    <div class="flexslider-controls">
+     <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                  <ol class="flex-control-nav">
+                   <a href="#" class="flex-next btn green">Learn More</a><br>
+                                <br>
+                                <a href="#" class="flex-prev"></a>
+                    {% for block in featureSlider.featureSlider %}
+                        <li>{% set image = block.icon.first() %}
+                            {% if image %}
+                               <img src="{{ image.getUrl }}" alt="{{ image.title }}">
+                            {% endif %}
+                            <small>{{ block.iconCaption }}</small>
+                        </li>
+                    {% endfor %}
+                  </ol>
+                </div>
+         </div>
+        </div>
+    </div>
+
+</section>

@@ -1,0 +1,32 @@
+<section class="bar col3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                {{ block.heading }}
+            </div>
+        </div>
+        <div class="row text">
+            <div class="col-md-4">
+                {% set image = block.col1Picture.first() %}
+                {% if image %}
+                    <img src="{{ image.getUrl }}" alt="{{ image.title }}">
+                {% endif %}
+                {{ block.col1Text }}
+            </div>
+            <div class="col-md-4 ">
+                {% set image = block.col2Picture.first() %}
+                {% if image %}
+                    <img src="{{ image.getUrl }}" alt="{{ image.title }}">
+                {% endif %}
+                {{ block.col1Text }}
+            </div>
+            <div class="col-md-4">
+                {% set image = block.col3Picture.first() %}
+                {% if image %}
+                    <img src="{{ image.getUrl }}" alt="{{ image.title }}">
+                {% endif %}
+                {{ block.col1Text }}
+            </div>
+        </div>
+    </div>
+</section>

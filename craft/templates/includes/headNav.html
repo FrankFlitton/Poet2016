@@ -1,0 +1,26 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <img class="white" src="{{ header.whiteLogo.first.getURL }}" alt="">
+                <img class="color" src="{{ header.colourLogo.first.getURL }}" alt="">
+            </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul>
+                {% set uriSegment = craft.request.segment(1) %}
+                <li {% if uriSegment == "company" %}class="active" {% endif %}><a href="/company">Company</a></li>
+                <li {% if uriSegment == "product" %}class="active" {% endif %}><a href="/product">Product</a></li>
+                <li {% if uriSegment == "blog" %}class="active" {% endif %}><a href="/blog">Blog</a></li>
+                <li><a href="#" class="btn white-outline">Sign In</a></li>
+            </ul>
+        </div>
+        <!--/.navbar-collapse -->
+    </div>
+</nav>

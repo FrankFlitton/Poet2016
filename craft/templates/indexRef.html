@@ -20,8 +20,9 @@
 {% extends "_layout" %}
 
 {% block content %}
-	{#
 	<h1>{{ entry.title }}</h1>
+
+	{{ entry.body }}
 
 	<h2>Recent News</h2>
 	<ul>
@@ -29,10 +30,4 @@
 			<li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
 		{% endfor %}
 	</ul>
-	 #}
-	{% include 'includes/bodyMatrix.html' %}
-{% endblock %}
-
-
-{% block BlockJS %}
 {% endblock %}

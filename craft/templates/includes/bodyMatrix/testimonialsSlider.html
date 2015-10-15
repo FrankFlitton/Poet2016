@@ -1,0 +1,31 @@
+<section class="customers" id="testimonials">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 testimonials">
+                <div class="testimonials-flex">
+                    <ul class="slides">
+                       {% for block in testimonialsSlider.testimonials %}
+                        <li>
+                            <div class="quote">{{ block.quote }}</div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="testimonial-controls">
+                    <ol class="testimonial-control-nav">
+                        <a href="#"></a>
+                        <a href="#" class="flex-prev"></a>
+                        {% for block in testimonialsSlider.testimonials %}
+                        <li>
+                            {% set image = block.image.first() %} {% if image %}
+                            <img src="{{ image.getUrl }}" alt="{{ image.title }}">{% endif %}
+                            <br><b>{{ block.personName }}</b>
+                            <br><i>{{ block.jobTitle }}</i>
+                        </li>
+                        {% endfor %}
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

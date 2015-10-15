@@ -13,7 +13,7 @@ return array(
         'omitScriptNameInUrls' => true,
     ),
  'poet.dev' => array(
-        'devMode' => true,
+        'devMode' => false,
     ),
 
  '*.com' => array(

@@ -1,0 +1,159 @@
+{% for block in entry.bodyFields %}
+
+    {% if block.type == "heading" %}
+    <section class="hero heading">
+        {% set image = block.image.first() %}
+        {% if image %}
+            <img class="bgimage" src="{{ image.getUrl }}" alt="{{ image.title }}">
+        {% endif %}
+        <div class="gradient one"></div>
+        <div class="gradient two"></div>
+        <div class="gradient three"></div>
+        
+        <div class="container">
+            <div class="row top">
+                <div class="col-sm-6 col-sm-offset-3">
+        
+                    <div class="heading-wrap">
+                        <div class="">
+                            {{ block.heading }}
+                        </div>
+                        <div class="">
+                            {{ block.subheading }}
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+    {% elseif block.type == "oneColumn" %}
+    
+    <div class="container">
+        <div class="row">
+           <div class="col-md-8 col-md-offset-2">
+            {{ block.text }}
+            </div>
+        </div>
+    </div>
+
+    {% elseif block.type == "twoColumn" %}
+    
+    <div class="container">
+        <div class="row">
+           <div class="col-md-4 col-md-offset-2">
+            {{ block.column1 }}
+            </div>
+            <div class="col-md-4">
+            {{ block.column2 }}
+            </div>
+        </div>
+    </div>
+
+    {% elseif block.type == "teamMembers" %}
+
+    <div class="container">
+        <div class="row">
+           <div class="col-md-8 col-md-offset-2">
+           
+           {% set counter = 1 %}
+           
+           {% for image in block.image %}
+           
+            {% if counter % 4 == 1 %}
+            <div class="row"> {# start row #}
+            {% endif %}
+                 
+              {% set transformIMG = {
+                  mode: 'crop',
+                  width: 300,
+                  quality: 70,
+                  position: 'center-center'
+                    } %}
+                <div class="col-md-3 text-center teamcard">
+                    <img src="{{ image.getURL(transformIMG) }}" alt=""> <br>
+                    <p><strong>{{ image.teamName }}</strong><br><small>{{ image.teamPosition }}</small></p>
+                    <p>{% if image.twitter|length %}<a href="{{ image.twitter }}" target="_blank"><i class="fa fa-twitter"></i></a>&ensp;{% endif %}
+                       {% if image.twitter|length %}<a href="{{ image.linkedin }}" target="_blank"><i class="fa fa-linkedin"></i></a>{% endif %}
+                    </p>
+                </div>
+            
+            {% if counter % 4 == 0 %}
+            </div> {# end row #}
+            {% endif %}
+           {% set counter = counter+1 %}
+           {% endfor %}
+           </div>
+           </div>
+        </div>
+    </div>
+
+    {% elseif block.type == "image" %}
+
+        {% set image = block.image.first() %}
+        {% set transformIMG = {
+          mode: 'crop',
+          width: 1200,
+          quality: 70,
+          position: 'center-center'
+        } %}
+        {% if image %}
+        <div class="container image">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+            <img src="{{ image.getUrl(transformIMG) }}" alt="{{ image.title }}">
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+    {% elseif block.type == "quote" %}
+     <div class="container image">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-2">
+                    <blockquote>
+                        <p>{{ block.quote }}</p>
+                        <cite>– {{ block.cite }}</cite>
+                    </blockquote>
+                </div>
+         </div>
+     </div>
+    
+    {% elseif block.type == "hero" %}
+
+        {% include 'includes/bodyMatrix/hero.html' %}
+
+    {% elseif block.type == "grayBar" %}
+
+        <section class="bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        {{ block.text }}
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    {% elseif block.type == "featureSlider" %}
+        {% if block.enable == 1 %}
+        {% include 'includes/bodyMatrix/featureSlider.html' %}
+        {% endif %}
+   
+    {% elseif block.type == "threeColumn" %}
+    
+        {% include 'includes/bodyMatrix/threeColumn.html' %}
+    
+    {% elseif block.type == "video" %}
+     
+         {% include 'includes/bodyMatrix/video.html' %}
+      
+    {% elseif block.type == "testimonialsSlider" %}
+        {% if block.enable == 1 %}
+        {% include 'includes/bodyMatrix/testimonialsSlider.html' %}
+        {% endif %}
+        
+    {% endif %}
+{% endfor %}
