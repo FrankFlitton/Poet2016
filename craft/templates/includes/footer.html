@@ -37,23 +37,25 @@
 
                 <form method="post" action="" accept-charset="UTF-8">
                     {{ getCsrfInput() }}
-                    <input type="hidden" name="action" value="contactForm/sendMessage">
-                    <input type="hidden" name="redirect" value="contact/thanks">
+                     <input type="hidden" name="action" value="contactForm/sendMessage"> 
+                    {# <input type="hidden" name="redirect" value="contact/thanks"> #}
 
                     <h3><label for="fromName">Your Name</label></h3>
-                    <input placeholder="Name*" onfocus="this.placeholder=''" onblur="this.placeholder='Name*'" id="fromName" type="text" name="fromName" value="{% if message is defined %}{{ message.fromName }}{% endif %}">{{ message is defined and message ? errorList(message.getErrors('fromName')) }}
+                    <input value="{% if message is defined %}{{ message.fromName }}{% endif %}" placeholder="Name*" onfocus="this.placeholder=''" onblur="this.placeholder='Name*'" id="fromName" type="text" name="fromName">
+                    {{ message is defined and message ? errorList(message.getErrors('fromName')) }}
 
                     <h3><label for="fromEmail">Your Email</label></h3>
-                    <input placeholder="Email*" onfocus="this.placeholder=''" onblur="this.placeholder='Email*'" id="fromEmail" type="text" name="fromEmail" value="{% if message is defined %}{{ message.fromEmail }}{% endif %}">{{ message is defined and message ? errorList(message.getErrors('fromEmail')) }}
+                    <input value="{% if message is defined %}{{ message.fromEmail }}{% endif %}" placeholder="Email*" onfocus="this.placeholder=''" onblur="this.placeholder='Email*'" id="fromEmail" type="text" name="fromEmail">
+                    {{ message is defined and message ? errorList(message.getErrors('fromEmail')) }}
 
-                    <h3><label for="company">Subject</label></h3>
-                    <input placeholder="Company" onfocus="this.placeholder=''" onblur="this.placeholder='Company'" id="company" type="text" name="company" value="{% if message is defined %}{{ message.company }}{% endif %}">{{ message is defined and message ? errorList(message.getErrors('subject')) }}
+                    <h3><label for="subject">Subject</label></h3>
+                    <input id="subject" type="text" name="subject" value="{% if message is defined %}{{ message.subject }}{% endif %}" placeholder="Company" onfocus="this.placeholder=''" onblur="this.placeholder='Company'">
+                    {{ message is defined and message ? errorList(message.getErrors('subject')) }}
 
                     <h3><label for="message">Message</label></h3>
-                    <input placeholder="Brief Message..." onfocus="this.placeholder=''" onblur="this.placeholder='Brief Message...'" id="message" name="message">{% if message is defined %}{{ message.message }}{% endif %}</textarea>
-                    {{ message is defined and message ? errorList(message.getErrors('message')) }}
+                    <input value="{% if message is defined %}{{ message.message }}{% endif %}" type="text" placeholder="Brief Message..." onfocus="this.placeholder=''" onblur="this.placeholder='Brief Message...'" id="message" name="message">{% if message is defined %}{{ message.message }}{% endif %}</input>
 
-                    <input type="submit" value="Drop us a line!">
+                    <input type="submit" value="Drop us a Line!">
                 </form>
             </div>
         </div>
