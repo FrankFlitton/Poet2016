@@ -1,4 +1,4 @@
-Welcome to Craft!
+Site Built With Craft CMS.
 
 Here are some online resources you might find useful:
 
