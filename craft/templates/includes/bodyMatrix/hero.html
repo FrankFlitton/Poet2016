@@ -1,7 +1,7 @@
 <section class="hero">
     {% set image = block.backgroundImage.first() %}
     {% if image %}
-        <img class="bgimage" src="{{ image.getUrl }}" alt="{{ image.title }}">
+    <img class="bgimage" src="{{ image.getUrl }}" alt="{{ image.title }}">
     {% endif %}
     <div class="gradient one"></div>
     <div class="gradient two"></div>
@@ -14,7 +14,7 @@
                 <a class="btn green" href="{{ block.greenButtonUrl }}">{{ block.greenButtonText }}</a>
                 {% endif %}
                 {% if not block.whiteButtonText is empty %}
-                <a class="btn white" href="{{ block.whiteButtonUrl }}">{{ block.whiteButtonText }}</a>
+                <a class="btn white" href="#" data-toggle="modal" data-target="#myModal" >{{ block.whiteButtonText }}</a>
                 {% endif %}
             </div>
         </div>
@@ -31,3 +31,9 @@
         </div>
     </div>
 </section>
+
+{% if not block.whiteButtonText is empty %}
+    <div class="modal fade" id="myModal" tabindex="-1">
+        <iframe width="568" height="320" frameborder="0" allowfullscreen="" src="{{ block.whiteButtonUrl }}"></iframe>
+    </div>
+{% endif %}

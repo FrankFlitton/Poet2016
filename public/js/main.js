@@ -81,8 +81,8 @@ $(document).ready(function() {
 });
 
  function youtubeResize() {
-      $.each($('.embedded-video > iframe'), function(i){
-        $(i).css('height', ($(i).width())*0.62);    //16:9 & padding
+      $.each($('.embedded-video iframe'), function(){
+        $(this).css('height', ($(this).width())*0.62);    //16:9 & padding
       });
     };
 

@@ -1,3 +1,4 @@
+{% if entry.section('homepage') %}
 <section class="support">
     <div class="container">
         <div class="row">
@@ -17,6 +18,7 @@
     </div>
 </section>
    
+{% endif %}
 
 <section class="trypoet">
     <div class="container">
@@ -62,66 +64,32 @@
 <footer>
     <div class="container">
         <div class="row">
-            <div class="col-xs-4 col-sm-2">
-                <ul>
-                    <li>
-                        <p><a href="#">Solutions</a>
-                        </p>
-                    </li>
-                    <li>
-                        <p><a href="#">Solutions</a>
-                        </p>
-                    </li>
-                    <li>
-                        <p><a href="#">Solutions</a>
-                        </p>
-                    </li>
-                    <li>
-                        <p><a href="#">Solutions</a>
-                        </p>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-xs-4 col-sm-2">
-                <ul>
-                    <li>
-                        <p><a href="#">Solutions</a>
-                        </p>
-                    </li>
-                    <li>
-                        <p><a href="#">Solutions</a>
-                        </p>
-                    </li>
-                    <li>
-                        <p><a href="#">Solutions</a>
-                        </p>
-                    </li>
-                    <li>
-                        <p><a href="#">Solutions</a>
-                        </p>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-xs-4 col-sm-2">
-                <ul>
-                    <li>
-                        <p><a href="#">Solutions</a>
-                        </p>
-                    </li>
-                    <li>
-                        <p><a href="#">Solutions</a>
-                        </p>
-                    </li>
-                    <li>
-                        <p><a href="#">Solutions</a>
-                        </p>
-                    </li>
-                    <li>
-                        <p><a href="#">Solutions</a>
-                        </p>
-                    </li>
-                </ul>
-            </div>
+
+                    {% set pages = craft.entries.section('pages').level(1) %}
+                       {% set counter = 0 %}
+                       {% set total = pages|length %}
+                    {% for page in pages %}
+                      
+                       {% if counter % 4 == 0 %}
+                    <div class="col-xs-4 col-sm-2">
+                        <ul>
+                       {% endif %}
+                       
+                       {% set counter = counter + 1 %}
+                        <li><p>{{ page.getLink() }}</p></li>
+                        
+                        {% if counter % 4 == 0 or counter == total %}
+                        </ul>
+                    </div>
+                        {% endif %}
+                    {% endfor %}
+                    {% if total <= 12 %}
+                        <div class="col-xs-4 col-sm-2"></div>
+                        <div class="col-xs-4 col-sm-2"></div>
+                    {% elseif total <= 8 %}
+                        <div class="col-xs-8 col-sm-4"></div>
+                    {% endif %}
+
             <div class="col-md-5 col-md-offset-1 col-sm-6 col-xs-10 col-xs-offset-1">
                 <a class="btn white-outline" href="{{ footer.requestADemoUrl }}">Request a demo!</a>
                 <div class="social">

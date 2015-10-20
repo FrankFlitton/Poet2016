@@ -2539,6 +2539,11 @@ body {
     margin-top: 0 !important;
   }
 }
+.featureslider .flexslider-controls .flex-control-nav {
+  background-color: white;
+  padding-bottom: 2em;
+  margin-bottom: -2em;
+}
 .featureslider .flexslider-controls .flex-control-nav .btn.green {
   background: transparent;
   text-align: left;
@@ -2626,6 +2631,14 @@ body {
 }
 #testimonials {
   padding-top: 0;
+}
+.modal iframe {
+  z-index: 99999;
+  position: absolute;
+  left: 50%;
+  margin-left: -284px;
+  top: 50%;
+  margin-top: -160px;
 }
 .video {
   padding-bottom: 0;
