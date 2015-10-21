@@ -11,6 +11,7 @@ return array(
  
 '*' => array(
         'omitScriptNameInUrls' => true,
+        'cpTrigger' => 'poetadmin',
     ),
  'poet.dev' => array(
         'devMode' => false,
