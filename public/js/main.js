@@ -14,6 +14,10 @@ $(window).load(function() {
     }
 });
 
+$( ".question" ).click(function() {
+  $( this ).toggleClass( "open" );
+});
+
 $(document).ready(function() {
     $('.flexslider-featureslider').flexslider({
         animation: "slide",

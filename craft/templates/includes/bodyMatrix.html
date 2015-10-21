@@ -29,6 +29,43 @@
         
     </section>
 
+    {% elseif block.type == "faq" %}
+
+    <div class="container faq">
+       <div class="row">
+           <div class="col-md-8 col-md-offset-2 text-center"><h2>{{ block.heading }}</h2></div>
+       </div>
+        <div class="row">
+          <div class="col-md-4 col-md-offset-2">
+              
+            {% set c = 0 %}
+            {% set t = block.faqFields|length %}
+            {% set h = t/2|round %}
+            
+            {% for row in block.faqFields %}
+            {% set c = c + 1 %}
+            <div class="col-md-12 question">
+                <strong>{{ row.question }}</strong>
+                <p>{{ row.answer }}</p>
+            </div>
+
+            {% if c == h %}
+            </div>
+            <div class="col-md-4">
+            {% endif %}
+
+            {% endfor %}
+              
+          </div>
+        </div>
+        <div class="row bottom">
+           <div class="col-md-8 col-md-offset-2 text-center">
+               <h2>{{ block.footerText }}</h2>
+               <a class="btn green" href="{{ block.buttonLink }}">{{ block.buttonText }}</a>
+           </div>
+       </div>
+    </div>
+
     {% elseif block.type == "oneColumn" %}
     
     <div class="container">
